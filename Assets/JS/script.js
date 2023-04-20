@@ -35,6 +35,7 @@ function getBand() {
 }
 //get api for concert dates 
 function getConcerts(bandSearch) {
+  console.log("getConcert")
 requestUrl = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + bandSearch + "&sort=date,asc&size=5&apikey=M1YKgwcd7XLntgC0peSBEu8GBJfrre5t";
 
 fetch(requestUrl)
@@ -124,8 +125,8 @@ fetch(requestUrl)
     }
     //adding wiki bio page 
     function wiki(bandSearch){
-        let requestUrl = "https://theaudiodb.com/api/v1/json/2/search.php?s=" + bandSearch;
-   
+        let requestUrl = "https://theaudiodb.com/api/v1/json/523532/search.php?s=" + bandSearch;
+   console.log('wiki')
         fetch(requestUrl)
         .then 
             (function (response) {
@@ -157,6 +158,7 @@ fetch(requestUrl)
             return response.json();
     })
             .then (function (data) {
+              console.log(data)
                 albumsList.innerHTML = "";
                 artist.textContent = bandSearch;
                 for (let x = 0; x < data.album.length; x++) {
